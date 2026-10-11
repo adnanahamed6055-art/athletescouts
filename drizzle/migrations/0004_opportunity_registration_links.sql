@@ -1,0 +1,2 @@
+ALTER TABLE public.opportunities ADD COLUMN registration_url text;
+ALTER TABLE public.opportunities ADD CONSTRAINT opportunities_registration_url_https CHECK (registration_url IS NULL OR registration_url ~ '^https://[^[:space:]]+$');
