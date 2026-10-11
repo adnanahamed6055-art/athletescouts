@@ -46,8 +46,8 @@ function AuthPage() {
 
   const social = async (provider: "google" | "apple") => {
     setBusy(true);
-    const { error } = await supabase.auth.signInWithOAuth({ provider, options: { redirectTo: `${window.location.origin}/auth` } });
-    if (error) { toast.error(r.error.message ?? "Sign-in failed"); setBusy(false); }
+    const r = await lovable.auth.signInWithOAuth(provider, { redirect_uri: `${window.location.origin}/auth` });
+    if (r.error) { toast.error(r.error.message ?? "Sign-in failed"); setBusy(false); }
   };
 
   const signIn = async (e: React.FormEvent) => {
